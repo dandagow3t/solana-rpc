@@ -1,0 +1,53 @@
+[package]
+name = "aignt-solana-rpc"
+version = "0.1.10"
+edition = "2024"
+rust-version = "1.89.0"
+description = "Unified Solana RPC client with provider abstraction, failover, and WebSocket support"
+authors = ["Dan Damian <arcassis@gmail.com>"]
+license = "MIT"
+keywords = ["solana", "rpc", "blockchain", "client", "helius"]
+categories = ["web-programming::http-client"]
+readme = "README.md"
+repository = "https://github.com/protokol/solana-rpc"
+homepage = "https://github.com/protokol/solana-rpc"
+
+[lib]
+name = "aignt_solana_rpc"
+path = "src/lib.rs"
+
+[features]
+default = ["helius"]
+helius = []
+helius-gatekeeper = ["helius"]
+alchemy = []
+all-providers = ["helius", "alchemy"]
+websocket = ["dep:tokio-tungstenite"]
+
+[dependencies]
+solana-client = "2"
+solana-sdk = "2"
+solana-account-decoder = "2"
+solana-transaction-status = "2"
+reqwest = { version = "0.12", features = ["json"] }
+governor = "0.10"
+async-trait = "0.1"
+anyhow = "1"
+thiserror = "2.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["time", "sync", "macros"] }
+tracing = "0.1"
+rand = "0.8"
+
+futures-util = "0.3"
+
+# Optional (websocket feature)
+tokio-tungstenite = { version = "0.26", features = ["native-tls"], optional = true }
+
+[dev-dependencies]
+dotenvy = "0.15"
+httpmock = "0.8"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+bs58 = "0.5"
+tracing-subscriber = "0.3"
