@@ -9,8 +9,8 @@ license = "MIT"
 keywords = ["solana", "rpc", "blockchain", "client", "helius"]
 categories = ["web-programming::http-client"]
 readme = "README.md"
-repository = "https://github.com/protokol/solana-rpc"
-homepage = "https://github.com/protokol/solana-rpc"
+repository = "https://github.com/dandagow3t/solana-rpc"
+homepage = "https://github.com/dandagow3t/solana-rpc"
 
 [lib]
 name = "aignt_solana_rpc"
